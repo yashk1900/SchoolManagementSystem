@@ -1,0 +1,41 @@
+{
+  "name": "schoolmanagementsystem",
+  "version": "1.0.0",
+  "description": "Node.js Rest Apis with Express, Sequelize & MySQL.",
+  "main": "server.js",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "jsonwebtoken": "^8.5.1",
+    "lodash.random": "^3.2.0",
+    "lodash.times": "^4.3.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "save-dev": "^0.0.1-security",
+    "sequelize-cli": "^6.2.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "sequelize",
+    "mysql",
+    "rest",
+    "api"
+  ],
+  "author": "Yash K",
+  "license": "ISC"
+}
