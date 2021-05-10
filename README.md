@@ -6,3 +6,5 @@ This API allows users to :
 3. CRUD operation on Grades( Class student is currently studying in :1,2,3..)
 4. CRUD operations on Users
 5. All these operations are performed only by Users. JWT was used to keep authorize users.
+
+NOTE: When a user is signed/logged in, a token is sent back, while making any CRUD requests for Teacher, Student, Grades, you will need to use this token as "x-access-token" in your headers. 
