@@ -38,9 +38,9 @@ app.use("/api/auth", AuthController);
 
 routes(app);
 
-app.get("*", function (req, res) {
-  res.sendfile("./public/index.html"); // load the single view file (angular will handle the page changes on the front-end)
-});
+// app.get("*", function (req, res) {
+//   res.sendfile("./public/index.html"); // load the single view file (angular will handle the page changes on the front-end)
+// });
 
 const port = parseInt(process.env.PORT, 10) || 4050;
 app.set("port", port);
