@@ -28,12 +28,13 @@ class inputForm extends React.Component {
   handleSubmit = async (e) => {
     console.log(this.state);
     e.preventDefault();
+    var { REACT_APP_API_TOKEN } = process.env;
+    console.log(REACT_APP_API_TOKEN);
     const response = await fetch("/api/teacher", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxMjUwOTk4LCJleHAiOjE2MjEzMzczOTh9.NokOaVG-ZdZYalxIe0gaC9wGItox1eSov82c1sgfy48",
+        cookie: REACT_APP_API_TOKEN,
       },
       body: JSON.stringify({
         name: this.state.name,

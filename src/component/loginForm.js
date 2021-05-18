@@ -2,51 +2,38 @@ import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { withRouter } from "react-router-dom";
 
-class updateStudent extends React.Component {
+class loginForm extends React.Component {
   state = {
     response: "",
-    name: "",
-    id: "",
+    email: "",
+    password: "",
     responseToPost: "",
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then((res) => this.setState({ response: res.express }))
-      .catch((err) => console.log(err));
-  }
-
-  //Calls the api, GETS INFO
-  callApi = async () => {
-    const response = await fetch("/api/teacher");
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
   };
 
   //POSTING INFO
   handleSubmit = async (e) => {
-    if (this.state.name === "") {
-      this.state.name = "teacher";
-    }
-    var { REACT_APP_API_TOKEN } = process.env;
-    console.log(REACT_APP_API_TOKEN);
     console.log(this.state);
     e.preventDefault();
-    const response = await fetch(`/api/teacher/${this.state.id}`, {
-      method: "PATCH",
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        cookie: REACT_APP_API_TOKEN,
       },
+      withCredentials: true,
+      credentials: "include",
       body: JSON.stringify({
-        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
       }),
     });
     const body = await response.text();
-    console.log(body);
+    var body2 = JSON.parse(body);
     this.setState({ responseToPost: body });
+    console.log(this.state.responseToPost.token);
+    console.log(process.env);
+    var { REACT_APP_API_TOKEN } = process.env;
+    REACT_APP_API_TOKEN = "jwt=" + body2.token;
+    console.log("PROCESS.ENV.TOKEN = ", REACT_APP_API_TOKEN);
   };
 
   // render() {
@@ -86,25 +73,25 @@ class updateStudent extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <Label for="Id">ID</Label>
+          <Label for="Name">Email</Label>
           <Input
-            type="number"
-            value={this.state.id}
-            onChange={(e) => this.setState({ id: e.target.value })}
+            type="name"
+            value={this.state.email}
+            onChange={(e) => this.setState({ email: e.target.value })}
             name="name"
-            id="id"
-            placeholder="Id of student to update"
+            id="email"
+            placeholder="Your Email"
           />
         </FormGroup>
         <FormGroup>
-          <Label for="Name">Name</Label>
+          <Label for="Passowrd">Password</Label>
           <Input
             type="name"
-            value={this.state.name}
-            onChange={(e) => this.setState({ name: e.target.value })}
+            value={this.state.password}
+            onChange={(e) => this.setState({ password: e.target.value })}
             name="name"
-            id="name"
-            placeholder="Your name"
+            id="password"
+            placeholder="Your Password"
           />
         </FormGroup>
         <input type="submit" value="Submit" />
@@ -112,4 +99,4 @@ class updateStudent extends React.Component {
     );
   }
 }
-export default updateStudent;
+export default loginForm;

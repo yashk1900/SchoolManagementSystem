@@ -49,13 +49,14 @@ class displayList extends React.Component {
 
   //Calls the api, GETS INFO
   callStudents = async (e) => {
+    var { REACT_APP_API_TOKEN } = process.env;
+    console.log(REACT_APP_API_TOKEN);
     console.log(this.state);
     e.preventDefault();
     const response = await fetch("/api/students", {
       method: "GET",
       headers: {
-        "x-access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxMjUwOTk4LCJleHAiOjE2MjEzMzczOTh9.NokOaVG-ZdZYalxIe0gaC9wGItox1eSov82c1sgfy48",
+        cookie: REACT_APP_API_TOKEN,
       },
     });
     const body = await response.json();
@@ -69,13 +70,14 @@ class displayList extends React.Component {
   };
 
   callTeachers = async (e) => {
+    var { REACT_APP_API_TOKEN } = process.env;
+    console.log(REACT_APP_API_TOKEN);
     console.log(this.state);
     e.preventDefault();
     const response = await fetch("/api/teachers", {
       method: "GET",
       headers: {
-        "x-access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxMjUwOTk4LCJleHAiOjE2MjEzMzczOTh9.NokOaVG-ZdZYalxIe0gaC9wGItox1eSov82c1sgfy48",
+        cookie: REACT_APP_API_TOKEN,
       },
     });
     const body = await response.json();

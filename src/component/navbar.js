@@ -59,6 +59,20 @@ const Navbar = () => {
             >
               Add Teacher
             </NavLink>
+            <NavLink
+              className="navbar-item"
+              activeClassName="is-active"
+              to="/loginForm"
+            >
+              Login
+            </NavLink>
+            <NavLink
+              className="navbar-item"
+              activeClassName="is-active"
+              to="/signupForm"
+            >
+              Signup
+            </NavLink>
           </div>
         </div>
       </div>

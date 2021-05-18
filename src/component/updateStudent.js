@@ -38,14 +38,15 @@ class updateStudent extends React.Component {
     if (this.state.grade === "") {
       this.state.grade = "1";
     }
+    var { REACT_APP_API_TOKEN } = process.env;
+    console.log(REACT_APP_API_TOKEN);
     console.log(this.state);
     e.preventDefault();
     const response = await fetch(`/api/student/${this.state.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "x-access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxMjc5NjM1LCJleHAiOjE2MjEzNjYwMzV9.AXM5hJxtybnxZA6jqq4htEoycozWUWsAIdN1qsUH54Q",
+        cookie: REACT_APP_API_TOKEN,
       },
       body: JSON.stringify({
         name: this.state.name,
